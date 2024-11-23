@@ -9,4 +9,5 @@ import Combine
 
 protocol AppModelType {
     var weatherState: AnyPublisher<WeatherDataState, Never> { get }
+    func addressSubmitted(_ address: String)
 }
