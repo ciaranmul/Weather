@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
+        VStack(spacing: 20) {
+            LocationView()
             WeatherView()
+            Spacer()
         }
         .padding()
+        .background(Gradient(colors: [.blue, .white]))
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(WeatherPresenter(model: StaticAppModel()))
+        .environmentObject(LocationPresenter(model: StaticAppModel()))
 }

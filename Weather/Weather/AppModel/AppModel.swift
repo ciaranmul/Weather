@@ -41,9 +41,13 @@ final class AppModel: AppModelType {
             do {
                 let location = try await userLocationDataProvider.getLocation(for: address)
                 let weatherData = try await weatherDataProvider.getWeatherData(for: location)
-                _weatherState.send(.success(weatherData))
+                await MainActor.run {
+                    _weatherState.send(.success(weatherData))
+                }
             } catch {
-                _weatherState.send(.failure(error))
+                await MainActor.run {
+                    _weatherState.send(.failure(error))
+                }
             }
         }
     }

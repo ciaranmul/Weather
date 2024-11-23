@@ -30,8 +30,12 @@ final class WeatherPresenter: ObservableObject {
 private extension WeatherDataState {
     var toViewState: WeatherViewState {
         switch self {
-        case .success(_):
-            .ready(.init(message: "success"))
+        case let .success(data):
+            .ready(.init(temperature: data.temperature,
+                         apparentTemperature: data.apparentTemperature,
+                         wind: data.wind,
+                         rain: data.rain,
+                         cloudCover: data.cloudCover))
         case .pending, .fetching, .failure:
             .loading
         }

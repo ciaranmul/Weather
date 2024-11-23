@@ -8,7 +8,7 @@
 import Testing
 @testable import Weather
 
-struct WeatherViewTests {
+struct WeatherPresenterTests {
     let mockModel: MockAppModel
     let subject: WeatherPresenter
 

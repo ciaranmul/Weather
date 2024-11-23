@@ -15,6 +15,7 @@ struct WeatherApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(controller.weatherPresenter)
+                .environmentObject(controller.locationPresenter)
         }
     }
 }

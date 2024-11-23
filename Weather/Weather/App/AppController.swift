@@ -13,6 +13,10 @@ final class AppController {
         WeatherPresenter(model: model)
     }()
 
+    lazy var locationPresenter: LocationPresenter = {
+        LocationPresenter(model: model)
+    }()
+
     private let dependencyContainer: DependencyContainerType
     private let model: AppModel
 

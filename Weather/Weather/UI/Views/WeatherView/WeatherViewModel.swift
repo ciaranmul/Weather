@@ -7,5 +7,9 @@
 
 
 struct WeatherViewModel {
-    let message: String
+    let temperature: String
+    let apparentTemperature: String
+    let wind: String
+    let rain: String
+    let cloudCover: String
 }

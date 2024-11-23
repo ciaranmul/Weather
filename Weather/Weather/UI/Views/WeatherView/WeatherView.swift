@@ -15,7 +15,18 @@ struct WeatherView: View {
         case .loading:
             Text("loading")
         case .ready(let weatherViewModel):
-            Text(weatherViewModel.message)
+            VStack {
+                Text(weatherViewModel.temperature)
+                Text(weatherViewModel.apparentTemperature)
+                Text(weatherViewModel.rain)
+                Text(weatherViewModel.wind)
+                Text(weatherViewModel.cloudCover)
+            }
         }
     }
+}
+
+#Preview {
+    WeatherView()
+        .environmentObject(WeatherPresenter(model: StaticAppModel()))
 }
