@@ -18,8 +18,8 @@ final class AppModel: AppModelType {
     // MARK: - Dependencies
 
     private let weatherDataProvider: WeatherDataProviderType
-    private let userLocationProvider: UserLocationProviderType
-    
+    private let userLocationDataProvider: UserLocationDataProviderType
+
     // MARK: - Private Properties
 
     private let _weatherState = CurrentValueSubject<WeatherDataState, Never>(.pending)
@@ -29,32 +29,17 @@ final class AppModel: AppModelType {
 
     init(dependencyContainer: DependencyContainerType) {
         weatherDataProvider = dependencyContainer.weatherDataProvider
-        userLocationProvider = dependencyContainer.userLocationProvider
-        
-        setupBindings()
+        userLocationDataProvider = dependencyContainer.userLocationDataProvider
     }
 
-    // MARK: - Private Functions
+    // MARK: - Internal Functions
 
-    private func setupBindings() {
-        setupLocationChangedBindings()
-    }
-
-    private func setupLocationChangedBindings() {
-        userLocationProvider
-            .location
-            .removeDuplicates()
-            .sink { [weak self] location in
-                self?.updateWeather(with: location)
-            }
-            .store(in: &cancellables)
-    }
-
-    private func updateWeather(with location: Location) {
+    func addressSubmitted(_ address: String) {
         _weatherState.send(.fetching)
 
         Task {
             do {
+                let location = try await userLocationDataProvider.getLocation(for: address)
                 let weatherData = try await weatherDataProvider.getWeatherData(for: location)
                 _weatherState.send(.success(weatherData))
             } catch {

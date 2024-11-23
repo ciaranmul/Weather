@@ -8,14 +8,14 @@
 @testable import Weather
 
 struct MockDependencyContainer: DependencyContainerType {
-    var userLocationProvider:  UserLocationProviderType {
-        mockUserLocationProvider
+    var userLocationDataProvider:  UserLocationDataProviderType {
+        mockUserLocationDataProvider
     }
 
     var weatherDataProvider: WeatherDataProviderType{
         mockWeatherDataProvider
     }
 
-    let mockUserLocationProvider = MockUserLocationProvider()
+    let mockUserLocationDataProvider = MockUserLocationDataProvider()
     let mockWeatherDataProvider = MockWeatherDataProvider()
 }

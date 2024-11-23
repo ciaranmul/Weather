@@ -24,24 +24,64 @@ struct AppModelTests {
             .values
             .makeAsyncIterator()
 
-        let nextValue = await iterator.next()
+        // initially
+        var nextValue = await iterator.next()
 
-        let state = try #require(nextValue)
-        let result = try #require(dataForState(state))
+        var state = try #require(nextValue)
+        #expect(state.isPending())
 
-        #expect(result.temperature == "13°C")
-        #expect(result.apparentTemperature == "10°C")
-        #expect(result.cloudCover == "a bit")
-        #expect(result.wind == "lots")
-        #expect(result.rain == "some")
+        // Submit an address
+        subject.addressSubmitted("123 some street, some town")
+
+        nextValue = await iterator.next()
+
+        state = try #require(nextValue)
+        #expect(state.isFetching())
+
+        nextValue = await iterator.next()
+
+        state = try #require(nextValue)
+
+        #expect(state.isSuccess({ result in
+            result.temperature == "13°C" &&
+            result.apparentTemperature == "10°C" &&
+            result.cloudCover == "a bit" &&
+            result.wind == "lots" &&
+            result.rain == "some"
+        }))
+    }
+}
+
+extension DataState {
+    func isPending() -> Bool {
+        guard case .pending = self else {
+            return false
+        }
+
+        return true
     }
 
-    func dataForState(_ state: WeatherDataState) -> WeatherData? {
-        switch state {
-        case .failure, .fetching, .pending:
-            nil
-        case let .success(data):
-            data
+    func isFetching() -> Bool {
+        guard case .fetching = self else {
+            return false
         }
+
+        return true
+    }
+
+    func isSuccess(_ test: (T) -> Bool) -> Bool {
+        guard case let .success(data) = self else {
+            return false
+        }
+
+        return test(data)
+    }
+
+    func isFailure(_ test: (Error) -> Bool) -> Bool {
+        guard case let .failure(error) = self else {
+            return false
+        }
+
+        return test(error)
     }
 }

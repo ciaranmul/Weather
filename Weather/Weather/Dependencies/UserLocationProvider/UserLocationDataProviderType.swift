@@ -7,6 +7,6 @@
 
 import Combine
 
-protocol UserLocationProviderType {
-    var location: AnyPublisher<Location, Never> { get }
+protocol UserLocationDataProviderType {
+    func getLocation(for address: String) async throws -> Location
 }

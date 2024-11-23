@@ -7,5 +7,5 @@
 
 struct DependencyContainer: DependencyContainerType {
     var weatherDataProvider: WeatherDataProviderType
-    var userLocationProvider: UserLocationProviderType
+    var userLocationDataProvider: UserLocationDataProviderType
 }
