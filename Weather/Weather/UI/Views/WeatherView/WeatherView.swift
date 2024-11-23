@@ -15,12 +15,24 @@ struct WeatherView: View {
         case .loading:
             Text("loading")
         case .ready(let weatherViewModel):
-            VStack {
-                Text(weatherViewModel.temperature)
-                Text(weatherViewModel.apparentTemperature)
-                Text(weatherViewModel.rain)
-                Text(weatherViewModel.wind)
-                Text(weatherViewModel.cloudCover)
+            VStack() {
+                VStack {
+                    Text(weatherViewModel.temperature)
+                        .font(.largeTitle)
+                    Text("Feels Like: \(weatherViewModel.apparentTemperature)")
+                }
+
+                VStack {
+                    Label(weatherViewModel.rain, systemImage: "cloud.rain")
+                    Label(weatherViewModel.wind, systemImage: "wind")
+                    Label(weatherViewModel.cloudCover, systemImage: "cloud")
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(.gray)
+                        .opacity(0.5)
+                )
             }
         }
     }

@@ -10,7 +10,7 @@ import Combine
 
 struct StaticAppModel: AppModelType {
     var weatherState: AnyPublisher<WeatherDataState, Never> {
-        Just(.pending).eraseToAnyPublisher()
+        Just(.success(.fixture)).eraseToAnyPublisher()
     }
 
     func addressSubmitted(_ address: String) { }
