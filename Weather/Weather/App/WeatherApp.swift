@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WeatherApp: App {
-    let controller = AppController()
+    private let controller = AppController()
 
     var body: some Scene {
         WindowGroup {
