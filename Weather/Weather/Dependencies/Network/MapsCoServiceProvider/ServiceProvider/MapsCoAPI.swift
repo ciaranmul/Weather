@@ -12,7 +12,7 @@ enum MapsCoAPI {
 
     case geocode(address: String)
 
-    var endpoint: Endpoint {
+    func endpoint(apiKey: String) -> Endpoint {
         switch self {
         case let .geocode(address):
             Endpoint(scheme: Self.scheme,
@@ -20,7 +20,7 @@ enum MapsCoAPI {
                      path: "/search",
                      queryItems: [
                         URLQueryItem(name: "q", value: address),
-                        URLQueryItem(name: "api_key", value: try! Configuration.value(for: "MAPS_CO_API_KEY"))
+                        URLQueryItem(name: "api_key", value: apiKey)
                      ])
         }
     }
