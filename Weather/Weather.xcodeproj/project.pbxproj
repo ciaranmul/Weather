@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A05A329E2CF33C480010DBE2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A05A329D2CF33C480010DBE2 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A0421FFF2CEFDA7A003F7151 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		A0421FED2CEFDA79003F7151 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0421FFE2CEFDA7A003F7151 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04220082CEFDA7A003F7151 /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A05A329D2CF33C480010DBE2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -106,6 +111,7 @@
 		A0421FE42CEFDA79003F7151 = {
 			isa = PBXGroup;
 			children = (
+				A05A329D2CF33C480010DBE2 /* README.md */,
 				A0421FEF2CEFDA79003F7151 /* Weather */,
 				A04220012CEFDA7A003F7151 /* WeatherTests */,
 				A042200B2CEFDA7A003F7151 /* WeatherUITests */,
@@ -245,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05A329E2CF33C480010DBE2 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
