@@ -1,0 +1,20 @@
+[
+    {
+        "place_id": 287131241,
+        "licence": "Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright",
+        "osm_type": "way",
+        "osm_id": 114054829,
+        "boundingbox": [
+            "37.3311957",
+            "37.3321649",
+            "-122.0305543",
+            "-122.0298245"
+        ],
+        "lat": "37.3316697",
+        "lon": "-122.03009820215502",
+        "display_name": "Infinite Loop 1, 1, Infinite Loop, Apple Campus, Cupertino, Santa Clara County, California, 95014, United States",
+        "class": "office",
+        "type": "company",
+        "importance":0.31001
+    }
+]

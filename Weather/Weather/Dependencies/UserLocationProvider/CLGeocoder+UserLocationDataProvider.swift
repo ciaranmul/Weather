@@ -23,4 +23,5 @@ extension CLGeocoder: UserLocationDataProviderType {
 
 enum GeocodingError: Error {
     case locationNotFound
+    case invalidLocation
 }

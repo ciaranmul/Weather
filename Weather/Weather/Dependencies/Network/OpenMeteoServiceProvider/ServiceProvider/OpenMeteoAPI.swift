@@ -6,24 +6,6 @@
 //
 import Foundation
 
-
-struct Endpoint {
-    let scheme: String
-    let host: String
-    let path: String
-    let queryItems: [URLQueryItem]
-
-    var url: URL? {
-        var components = URLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.path = path
-        components.queryItems = queryItems
-
-        return components.url
-    }
-}
-
 enum OpenMeteoAPI {
     private static let host = "api.open-meteo.com"
     private static let scheme = "https"

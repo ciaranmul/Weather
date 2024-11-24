@@ -1,15 +1,15 @@
 //
-//  OpenMeteoServiceProvider.swift
+//  ServiceProvider.swift
 //  Weather
 //
-//  Created by Ciarán Mulholland on 23/11/2024.
+//  Created by Ciarán Mulholland on 24/11/2024.
 //
-
 import Foundation
 
-final class OpenMeteoServiceProvider: OpenMeteoServiceProviderType {
-    func getCurrentForecast(latitude: Double, longitude: Double) async -> Result<CurrentWeatherResponse, OpenMeteoServiceError> {
-        guard let url = OpenMeteoAPI.forecast(latitude: latitude, longitude: longitude).endpoint.url else {
+enum ServiceProvider {
+    static func request<T: Decodable>(endpoint: Endpoint,
+                                      decodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) async -> Result<T, ServiceProviderError> {
+        guard let url = endpoint.url else {
             return .failure(.invalidURL)
         }
 
@@ -24,8 +24,11 @@ final class OpenMeteoServiceProvider: OpenMeteoServiceProviderType {
                 return .failure(.statusCode(httpResponse.statusCode))
             }
 
-            let currentWeatherResponse = try JSONDecoder().decode(CurrentWeatherResponse.self, from: data)
-            return .success(currentWeatherResponse)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = decodingStrategy
+
+            let object = try decoder.decode(T.self, from: data)
+            return .success(object)
         } catch {
             return .failure(.underlying(error))
         }

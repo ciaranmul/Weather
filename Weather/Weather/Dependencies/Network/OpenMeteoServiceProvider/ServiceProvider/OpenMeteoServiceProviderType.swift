@@ -6,5 +6,5 @@
 //
 
 protocol OpenMeteoServiceProviderType {
-    func getCurrentForecast(latitude: Double, longitude: Double) async -> Result<CurrentWeatherResponse, OpenMeteoServiceError>
+    func getCurrentForecast(latitude: Double, longitude: Double) async -> Result<CurrentWeatherResponse, ServiceProviderError>
 }

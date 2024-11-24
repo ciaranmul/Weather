@@ -418,6 +418,8 @@
 		};
 		A04220132CEFDA7A003F7151 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = A0421FEF2CEFDA79003F7151 /* Weather */;
+			baseConfigurationReferenceRelativePath = secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -445,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MAPS_CO_API_KEY = "$(MAPS_CO_API_KEY)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ciaranmulholland.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -459,6 +462,8 @@
 		};
 		A04220142CEFDA7A003F7151 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = A0421FEF2CEFDA79003F7151 /* Weather */;
+			baseConfigurationReferenceRelativePath = secrets.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +491,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MAPS_CO_API_KEY = "$(MAPS_CO_API_KEY)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ciaranmulholland.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
