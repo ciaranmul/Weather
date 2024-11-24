@@ -41,14 +41,22 @@ struct AppModelTests {
         nextValue = await iterator.next()
 
         state = try #require(nextValue)
+        let data = try #require(state.data)
 
-        #expect(state.isSuccess({ result in
-            result.temperature == "13°C" &&
-            result.apparentTemperature == "10°C" &&
-            result.cloudCover == "a bit" &&
-            result.wind == "lots" &&
-            result.rain == "some"
-        }))
+        #expect(data.temperature.value == 2.5)
+        #expect(data.temperature.unit == "°C")
+        #expect(data.apparentTemperature.value == -1.3)
+        #expect(data.apparentTemperature.unit == "°C")
+        #expect(data.cloudCover.value == 100)
+        #expect(data.cloudCover.unit == "%")
+        #expect(data.windSpeed.value == 10.1)
+        #expect(data.windSpeed.unit == "km/h")
+        #expect(data.windDirection.value == 197)
+        #expect(data.windDirection.unit == "°")
+        #expect(data.windGusts.value == 23.8)
+        #expect(data.windGusts.unit == "km/h")
+        #expect(data.rain.value == 0.00)
+        #expect(data.rain.unit == "mm")
     }
 }
 
@@ -83,5 +91,14 @@ extension DataState {
         }
 
         return test(error)
+    }
+
+    var data: T? {
+        switch self {
+        case let .success(data):
+            return data
+        case .pending, .fetching, .failure:
+            return nil
+        }
     }
 }
