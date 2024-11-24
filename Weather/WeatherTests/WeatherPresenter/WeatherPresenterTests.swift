@@ -4,7 +4,7 @@
 //
 //  Created by Ciarán Mulholland on 23/11/2024.
 //
-
+import Foundation
 import Testing
 @testable import Weather
 
@@ -18,7 +18,7 @@ struct WeatherPresenterTests {
     }
 
     @Test func weatherViewStateInitial() async throws {
-        #expect(subject.weatherState.isLoading())
+        #expect(subject.weatherState.isPending())
     }
 
     @Test func weatherViewStateFetching() async throws {
@@ -41,7 +41,10 @@ struct WeatherPresenterTests {
 
     @Test func weatherViewStateFailure() async throws {
         mockModel.weatherStateSubject.send(.failure(TestError.general))
-        #expect(subject.weatherState.isLoading())
+        try #require(subject.weatherState.isError())
+
+        let message = try #require(subject.weatherState.errorMessage)
+        #expect(message == "general error")
     }
 }
 
@@ -49,7 +52,24 @@ enum TestError: Error {
     case general
 }
 
+extension TestError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .general:
+            "general error"
+        }
+    }
+}
+
 extension WeatherViewState {
+    func isPending() -> Bool {
+        guard case .pending = self else {
+            return false
+        }
+
+        return true
+    }
+
     func isLoading() -> Bool {
         guard case .loading = self else {
             return false
@@ -66,11 +86,28 @@ extension WeatherViewState {
         return true
     }
 
+    func isError() -> Bool {
+        guard case .error = self else {
+            return false
+        }
+
+        return true
+    }
+
     var data: WeatherViewModel? {
         switch self {
         case let .ready(data):
             data
-        case .loading:
+        case .loading, .pending, .error:
+            nil
+        }
+    }
+
+    var errorMessage: String? {
+        switch self {
+        case let .error(message):
+            message
+        case .loading, .pending, .ready:
             nil
         }
     }
