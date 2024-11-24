@@ -58,6 +58,36 @@ struct AppModelTests {
         #expect(data.rain.value == 0.00)
         #expect(data.rain.unit == "mm")
     }
+
+    @Test func addressSubmittedFailure() async throws {
+        mockDependencies.mockUserLocationDataProvider.errorToThrow = TestError.general
+
+        var iterator = subject
+            .weatherState
+            .values
+            .makeAsyncIterator()
+        
+        // initially
+        var nextValue = await iterator.next()
+
+        var state = try #require(nextValue)
+        #expect(state.isPending())
+
+        // Submit an address
+        subject.addressSubmitted("123 some street, some town")
+
+        nextValue = await iterator.next()
+
+        state = try #require(nextValue)
+        #expect(state.isFetching())
+
+        nextValue = await iterator.next()
+
+        state = try #require(nextValue)
+        let error = try #require(state.error as? TestError)
+
+        #expect(error == .general)
+    }
 }
 
 extension DataState {
@@ -98,6 +128,15 @@ extension DataState {
         case let .success(data):
             return data
         case .pending, .fetching, .failure:
+            return nil
+        }
+    }
+
+    var error: Error? {
+        switch self {
+        case let .failure(error):
+            return error
+        case .success, .pending, .fetching:
             return nil
         }
     }

@@ -8,9 +8,10 @@
 import SwiftUI
 import Combine
 
+/// Static implementation of the App Model to be used in previews
 struct StaticAppModel: AppModelType {
     var weatherState: AnyPublisher<WeatherDataState, Never> {
-        Just(.success(.fixture)).eraseToAnyPublisher()
+        Just(.pending).eraseToAnyPublisher()
     }
 
     func addressSubmitted(_ address: String) { }

@@ -12,6 +12,7 @@ struct Endpoint {
     let path: String
     let queryItems: [URLQueryItem]
 
+    /// Returns a URL object constructed by the properties of the Endpoint
     var url: URL? {
         var components = URLComponents()
         components.scheme = scheme

@@ -5,6 +5,9 @@
 //  Created by Ciarán Mulholland on 24/11/2024.
 //
 
+/// Concrete implementation of the MapsCoServiceProviderType
+///
+/// This class utilises the API key it is created with to make requests to the Maps.co API
 final class MapsCoServiceProvider: MapsCoServiceProviderType {
     private var apiKey: String
 

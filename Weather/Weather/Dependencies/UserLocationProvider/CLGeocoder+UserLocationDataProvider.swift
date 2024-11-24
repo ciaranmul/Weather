@@ -7,6 +7,9 @@
 
 import CoreLocation
 
+/// Extends `CLGeocoder` to conform to `UserLocationDataProvider`
+///
+/// This allows the built-in `CLGeocoder` to be used to provide geocoding behaviour when the third-party option is unavailable.
 extension CLGeocoder: UserLocationDataProviderType {
     func getLocation(for address: String) async throws -> Location {
         let placemark = try await geocodeAddressString(address)
@@ -21,7 +24,10 @@ extension CLGeocoder: UserLocationDataProviderType {
     }
 }
 
+/// Errors which may occur when geocoding an address
 enum GeocodingError: Error {
+    /// The location could not be found
     case locationNotFound
-    case invalidLocation
+    /// The returned coordinates are invalid
+    case invalidCoordinates
 }

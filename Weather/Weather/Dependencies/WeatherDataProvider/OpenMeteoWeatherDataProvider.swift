@@ -7,9 +7,16 @@
 
 import Foundation
 
+/// Concrete implementation of `WeatherDataProviderType`
+///
+/// This implementation uses the Open-Meteo API to get weather data
 final class OpenMeteoWeatherDataProvider: WeatherDataProviderType {
     private let openMeteoServiceProvider: OpenMeteoServiceProviderType
 
+    /// Creates an instance of the OpenMeteoWeatherDataProvider
+    ///
+    /// - Parameters:
+    ///     - openMeteoServiceProvider: A class that provides access to the Open-Meteo service
     init(openMeteoServiceProvider: OpenMeteoServiceProviderType) {
         self.openMeteoServiceProvider = openMeteoServiceProvider
     }

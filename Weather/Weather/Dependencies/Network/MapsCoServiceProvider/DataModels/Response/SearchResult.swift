@@ -5,6 +5,7 @@
 //  Created by Ciarán Mulholland on 24/11/2024.
 //
 
+/// Describes the expected Search Result object to be returned from the service
 struct SearchResult: Decodable {
     let placeId: Int
     let licence: String

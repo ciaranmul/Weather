@@ -5,11 +5,13 @@
 //  Created by Ciarán Mulholland on 23/11/2024.
 //
 
+/// Wraps a value with its unit
 struct ValueWithUnit<T> {
     let value: T
     let unit: String
 }
 
+/// Describes the current weather
 struct WeatherData {
     let temperature: ValueWithUnit<Float>
     let apparentTemperature: ValueWithUnit<Float>

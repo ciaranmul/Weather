@@ -17,8 +17,11 @@ struct LocationPresenterTests {
         subject = LocationPresenter(model: mockModel)
     }
 
-    @Test func submit() async throws {
-        subject.submit("")
-        #expect(mockModel.submittedAddresses.contains(""))
+    @Test(arguments: [
+        "",
+        "123 some street"
+    ]) func submit(address: String) async throws {
+        subject.submit(address)
+        #expect(mockModel.submittedAddresses.contains(address))
     }
 }

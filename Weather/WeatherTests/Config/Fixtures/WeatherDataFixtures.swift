@@ -1,16 +1,10 @@
 //
-//  StaticWeatherDataProvider.swift
+//  WeatherDataFixtures.swift
 //  Weather
 //
-//  Created by Ciarán Mulholland on 23/11/2024.
+//  Created by Ciarán Mulholland on 24/11/2024.
 //
-
-/// A static implementation of the `WeatherProviderType` that returns fixtures instead of live data
-final class StaticWeatherDataProvider: WeatherDataProviderType {
-    func getWeatherData(for location: Location) async throws -> WeatherData {
-        .fixture
-    }
-}
+@testable import Weather
 
 extension WeatherData {
     static let fixture: WeatherData = WeatherData(temperature: .init(value: 2.5, unit: "°C"),
