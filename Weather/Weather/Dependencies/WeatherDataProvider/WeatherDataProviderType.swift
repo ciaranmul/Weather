@@ -11,5 +11,5 @@ protocol HasWeatherDataProvider {
 
 /// A weather data provider type can supply weather data for the provided location.
 protocol WeatherDataProviderType {
-    func getWeatherData(for: Location) async throws  -> WeatherData
+    func getWeatherData(for location: Location) async throws  -> WeatherData
 }

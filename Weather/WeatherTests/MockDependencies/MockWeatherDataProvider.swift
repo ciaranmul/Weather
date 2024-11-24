@@ -10,7 +10,7 @@
 final class MockWeatherDataProvider: WeatherDataProviderType {
     var weatherDataToReturn: WeatherData = .fixture
 
-    func getWeatherData(for: Weather.Location) async throws -> Weather.WeatherData {
+    func getWeatherData(for location: Weather.Location) async throws -> Weather.WeatherData {
         weatherDataToReturn
     }
 }

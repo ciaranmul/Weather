@@ -37,6 +37,20 @@
 			);
 			target = A0421FEC2CEFDA79003F7151 /* Weather */;
 		};
+		A05A326A2CF24C770010DBE2 /* Exceptions for "WeatherTests" folder in "Weather" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				OpenMeteoServiceProvider/ResponseStubs/CurrentWeatherResponseStub.json,
+			);
+			target = A0421FEC2CEFDA79003F7151 /* Weather */;
+		};
+		A05A326B2CF24C770010DBE2 /* Exceptions for "WeatherTests" folder in "WeatherTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				OpenMeteoServiceProvider/ResponseStubs/CurrentWeatherResponseStub.json,
+			);
+			target = A0421FFD2CEFDA7A003F7151 /* WeatherTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -50,6 +64,10 @@
 		};
 		A04220012CEFDA7A003F7151 /* WeatherTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A05A326A2CF24C770010DBE2 /* Exceptions for "WeatherTests" folder in "Weather" target */,
+				A05A326B2CF24C770010DBE2 /* Exceptions for "WeatherTests" folder in "WeatherTests" target */,
+			);
 			path = WeatherTests;
 			sourceTree = "<group>";
 		};
@@ -208,6 +226,8 @@
 			);
 			mainGroup = A0421FE42CEFDA79003F7151;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0421FEE2CEFDA79003F7151 /* Products */;
 			projectDirPath = "";
@@ -401,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Weather/Weather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -441,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = Weather/Weather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

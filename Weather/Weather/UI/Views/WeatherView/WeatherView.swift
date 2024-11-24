@@ -22,18 +22,21 @@ struct WeatherView: View {
                     Text("Feels Like: \(weatherViewModel.apparentTemperature)")
                 }
 
-                VStack {
+                Divider()
+
+                VStack(alignment: .leading) {
                     Label(weatherViewModel.rain, systemImage: "cloud.rain")
-                    Label(weatherViewModel.wind, systemImage: "wind")
+                    Label(weatherViewModel.windSpeed, systemImage: "wind")
+                    Label(weatherViewModel.windDirection, systemImage: "arrow.up.right")
                     Label(weatherViewModel.cloudCover, systemImage: "cloud")
                 }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.gray)
-                        .opacity(0.5)
-                )
             }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.white)
+                    .opacity(0.5)
+            )
         }
     }
 }

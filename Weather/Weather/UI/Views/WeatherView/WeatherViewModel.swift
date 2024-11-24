@@ -9,7 +9,8 @@
 struct WeatherViewModel {
     let temperature: String
     let apparentTemperature: String
-    let wind: String
+    let windSpeed: String
+    let windDirection: String
     let rain: String
     let cloudCover: String
 }

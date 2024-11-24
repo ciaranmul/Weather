@@ -21,7 +21,8 @@ final class AppController {
     private let model: AppModel
 
     init() {
-        dependencyContainer = DependencyContainer(weatherDataProvider: StaticWeatherDataProvider(),
+        let openMeteoWeatherDataProvider = OpenMeteoWeatherDataProvider(openMeteoServiceProvider: OpenMeteoServiceProvider())
+        dependencyContainer = DependencyContainer(weatherDataProvider: openMeteoWeatherDataProvider,
                                                   userLocationDataProvider: CLGeocoder())
         model = AppModel(dependencyContainer: dependencyContainer)
     }
