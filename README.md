@@ -35,3 +35,28 @@ To build the app with a valid API key a `secrets.xcconfig` must be added to the 
 // secrets.xcconfig
 MAPS_CO_API_KEY = [YOUR API KEY HERE]
 ```
+
+# Areas for improvement
+
+## Error Messaging
+
+Currently the error view just shows whatever the localised description of the error is - it would be better to provide specific, actionable error messaging
+
+## Unit Testing
+
+More unit test coverage would be preferred, specifically for covering "unhappy" paths.
+- `ServiceProvider` should be protocoled so that a mock can be provided to write unit tests for the Open-Meteo and Maps.co service providers
+- Decoding of response objects should be unit tested using the stubs already included
+    - These stubs aren't exhaustive - difference scenarios should be covered using a range of stubs
+- All errors that can throw should have those paths tested to ensure the expected behaviour
+
+## UI Testing
+
+There are no actual UI tests. UI tests should be added to cover at minimum:
+- Search bar is available at launch
+- Error view is triggered for invalid address string
+- When the weather data view is shown, all of the expected properties are present
+
+## Accessibility
+
+Accessibility hints should be included to aid users. Only the default accessibility features are present for now.
