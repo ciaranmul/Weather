@@ -18,6 +18,7 @@ struct LocationView: View {
             }
             .textFieldStyle(.roundedBorder)
             .submitLabel(.search)
+            .accessibilityIdentifier("address_search_field")
     }
 }
 

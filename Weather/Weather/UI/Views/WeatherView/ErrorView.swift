@@ -16,11 +16,13 @@ struct ErrorView: View {
             VStack(alignment: .leading) {
                 Text("Something went wrong. Check your address and try again.")
                     .font(.headline)
+                    .accessibilityIdentifier("main_error_message")
 
                 Divider()
 
                 Text(errorMessage)
                     .font(.callout)
+                    .accessibilityIdentifier("detailed_error_message")
             }
         }
         .padding()
