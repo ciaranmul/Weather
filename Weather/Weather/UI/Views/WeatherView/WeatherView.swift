@@ -16,6 +16,7 @@ struct WeatherView: View {
             EmptyView()
         case .loading:
             ProgressView()
+                .accessibilityIdentifier("progress_view")
         case .ready(let weatherViewModel):
             WeatherDataView(weatherViewModel: weatherViewModel)
         case let .error(errorMessage):
